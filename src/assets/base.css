@@ -1,0 +1,118 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --t-cl-white: #ffffff;
+  --t-cl-white-soft: #f8f8f8;
+  --t-cl-white-mute: #f2f2f2;
+
+  --t-cl-black: #232323;
+  --t-cl-black-soft: #292929;
+  --t-cl-black-mute: #282828;
+
+  --t-cl-indigo: #2c3e50;
+
+  --t-cl-divider-light-1: rgba(60, 60, 60, 0.29);
+  --t-cl-divider-light-2: rgba(60, 60, 60, 0.12);
+  --t-cl-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --t-cl-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --t-cl-text-light-1: var(--t-cl-indigo);
+  --t-cl-text-light-2: rgba(60, 60, 60, 0.66);
+  --t-cl-text-dark-1: var(--t-cl-white);
+  --t-cl-text-dark-2: rgba(235, 235, 235, 0.64);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--t-cl-white);
+  --color-background-soft: var(--t-cl-white-soft);
+  --color-background-mute: var(--t-cl-white-mute);
+
+  --color-border: var(--t-cl-divider-light-2);
+  --color-border-hover: var(--t-cl-divider-light-1);
+
+  --color-heading: var(--t-cl-text-light-1);
+  --color-text: var(--t-cl-text-light-1);
+
+  --color-oposite-background: var(--t-cl-black);
+  --color-oposite-focus: var(--t-cl-divider-light-1);
+  --color-oposite-text: var(--t-cl-text-dark-2);
+
+
+  --section-gap: 160px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--t-cl-black);
+    --color-background-soft: var(--t-cl-black-soft);
+    --color-background-mute: var(--t-cl-black-mute);
+
+    --color-border: var(--t-cl-divider-dark-2);
+    --color-border-hover: var(--t-cl-divider-dark-1);
+
+    --color-heading: var(--t-cl-text-dark-1);
+    --color-text: var(--t-cl-text-dark-2);
+
+    --color-oposite-background: var(--t-cl-white);
+    --color-oposite-focus: var(--t-cl-divider-light-1);
+    --color-oposite-text: var(--t-cl-white);
+
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+label {
+  color: var(--color-text);
+}
+
+.flexColumnContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flexRowContainer {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flexRowBetweenContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,51 @@
+<script setup lang="ts">
+import BorderlessInput from '../components/BorderlessInput.vue'
+import BorderlessButton from '../components/BorderlessButton.vue'
+import LinkStyleButton from '../components/LinkStyleButton.vue'
+import IconProjectLogo from '../components/icons/IconProjectLogo.vue'
+</script>
+
+<template>
+  <div id="screen">
+    <div class="container flexColumnContainer">
+      <div class="logoContainer flexColumnContainer">
+        <IconProjectLogo class="logo" />
+      </div>
+      <div class="formContainer flexColumnContainer">
+        <BorderlessInput :label="'Usuário'" :name="'user'" />
+        <BorderlessInput :label="'Senha'" :name="'password'" type="password" />
+        <div class="flexRowBetweenContainer buttonsContainer">
+          <LinkStyleButton :label="'Esqueci minha senha'" :name="'forgot'" :onClick="(t) => console.log(t)" />
+          <BorderlessButton :label="'Acessar'" :name="'login'" :onClick="(t) => console.log(t)" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.container {
+  display: flex;
+  width: 28rem;
+  height: 30rem;
+  background-color: var(--color-background-soft);
+}
+
+.logoContainer {
+  flex: .4;
+}
+
+.logo {
+  width: 7rem;
+  height: auto;
+}
+
+.formContainer {
+  flex: .4;
+}
+
+.buttonsContainer {
+  width: 100%;
+  padding-top: 1rem;
+}
+</style>
