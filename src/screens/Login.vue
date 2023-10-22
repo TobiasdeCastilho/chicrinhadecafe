@@ -3,6 +3,14 @@ import BorderlessInput from '../components/BorderlessInput.vue'
 import BorderlessButton from '../components/BorderlessButton.vue'
 import LinkStyleButton from '../components/LinkStyleButton.vue'
 import IconProjectLogo from '../components/icons/IconProjectLogo.vue'
+
+const forgotClick = () => {
+
+}
+
+const loginClick = () => {
+}
+
 </script>
 
 <template>
@@ -16,7 +24,7 @@ import IconProjectLogo from '../components/icons/IconProjectLogo.vue'
         <BorderlessInput :label="'Senha'" :name="'password'" type="password" />
         <div class="flexRowBetweenContainer buttonsContainer">
           <LinkStyleButton :label="'Esqueci minha senha'" :name="'forgot'" :onClick="(t) => console.log(t)" />
-          <BorderlessButton :label="'Acessar'" :name="'login'" :onClick="(t) => console.log(t)" />
+          <BorderlessButton :label="'Acessar'" :name="'login'" :onClick="(t) => $router.replace('/home')" />
         </div>
       </div>
     </div>
