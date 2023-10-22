@@ -14,7 +14,7 @@ const loginClick = () => {
 </script>
 
 <template>
-  <div id="screen">
+  <div id="screen" class="flexColumnContainer">
     <div class="container flexColumnContainer">
       <div class="logoContainer flexColumnContainer">
         <IconProjectLogo class="logo" />
