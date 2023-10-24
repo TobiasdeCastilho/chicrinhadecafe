@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import { type MenuItem } from './MenuItem.vue'
 import IconProjectLogo from './icons/IconProjectLogo.vue';
 
 </script>
@@ -11,15 +10,16 @@ import IconProjectLogo from './icons/IconProjectLogo.vue';
       <IconProjectLogo class="smIcon" />
     </div>
     <div class="smSeparator" />
+
   </div>
 </template>
 
 <style scoped>
 .smContainer {
   height: 100vh;
-  width: 6rem;
+  width: 5rem;
   background-color: var(--color-background-soft);
-  box-shadow: 3rem 0rem 1rem 1rem var(--t-cl-black);
+  box-shadow: .4rem 0rem .6rem -.8rem var(--color-oposite-background);
   justify-content: flex-start;
   padding: 1rem 0;
   overflow-y: scroll;
@@ -37,13 +37,13 @@ import IconProjectLogo from './icons/IconProjectLogo.vue';
 }
 
 .smIcon {
-  max-width: 4rem;
+  max-width: 2.5rem;
   height: auto;
 }
 
 .smSeparator {
   width: 60%;
-  border-bottom: .3rem dashed var(--color-background);
+  border-bottom: .2rem dashed var(--color-background);
   margin: 1rem 0;
 }
 </style>

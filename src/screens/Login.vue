@@ -34,17 +34,17 @@ const loginClick = () => {
 <style scoped>
 .container {
   display: flex;
-  width: 28rem;
-  height: 30rem;
+  width: 26rem;
+  height: 26rem;
   background-color: var(--color-background-soft);
 }
 
 .logoContainer {
-  flex: .4;
+  flex: .5;
 }
 
 .logo {
-  width: 7rem;
+  width: 6rem;
   height: auto;
 }
 

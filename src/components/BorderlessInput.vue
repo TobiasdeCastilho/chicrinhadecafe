@@ -38,6 +38,7 @@ const getPattern = () => {
 }
 
 .blInputContainer>label {
+  transition: all 200ms;
   background-color: transparent;
   color: var(--color-text);
   left: .4rem;
@@ -57,6 +58,7 @@ const getPattern = () => {
 
 .blInputContainer>input:focus~label,
 .blInputContainer>input:not(:placeholder-shown)~label {
+  transition: all 300ms;
   font-size: 11px;
   left: .3rem;
   top: 0rem;

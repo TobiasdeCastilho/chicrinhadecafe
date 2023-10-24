@@ -1,13 +1,11 @@
 <script setup lang="ts">
 
-import SideMenu from '@/components/SideMenu.vue';
-import IconProjectLogo from '../components/icons/IconProjectLogo.vue'
+import SideMenu from '#/SideMenu.vue';
 
 </script>
 
 <template>
   <div id="screen">
-
     <SideMenu />
     <div class="">
 

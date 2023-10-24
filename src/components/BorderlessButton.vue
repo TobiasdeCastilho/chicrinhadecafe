@@ -10,16 +10,17 @@ const { label, name, onClick } = defineProps<{
 </script>
 
 <template>
-  <div tabindex="0" class="flexColumnContainer blButton" :onclick="() => onClick(name ?? label)">
+  <button tabindex="0" class="flexColumnContainer blButton" :onclick="() => onClick(name ?? label)">
     <p>{{ label }}</p>
-  </div>
+  </button>
 </template>
 
 <style scoped>
 .blButton {
   background-color: var(--color-oposite-background);
+  border: none;
   width: 8.8rem;
-  height: 1.8rem;
+  height: 2.4rem;
   margin: .2rem .1rem;
   padding: .1rem .1rem;
 }
