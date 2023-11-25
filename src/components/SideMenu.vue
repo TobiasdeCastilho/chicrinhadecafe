@@ -6,11 +6,19 @@ import IconProjectLogo from './icons/IconProjectLogo.vue';
 
 <template>
   <div tabindex="0" class="flexColumnContainer smContainer">
-    <div :on-click="() => $router.replace('/home')" class="smItem">
+    <div tabindex="0" :onClick="() => $router.replace('/home')" class="smItem">
       <IconProjectLogo class="smIcon" />
     </div>
     <div class="smSeparator" />
-
+    <div class="smItem" :onClick="() => $router.replace('/register')">
+      <p>Cadastro</p>
+    </div>
+    <div class="smItem" :onClick="() => $router.replace('/stock')">
+      <p>Estoque</p>
+    </div>
+    <div class="smItem" :onClick="() => $router.replace('/sales')">
+      <p>Vendas</p>
+    </div>
   </div>
 </template>
 
@@ -27,7 +35,7 @@ import IconProjectLogo from './icons/IconProjectLogo.vue';
 
 .smContainer:first-child::before {
   display: block;
-  width: 60%;
+  width: 90%;
   height: 1rem;
   background-color: var(--color-background);
 }
@@ -45,5 +53,10 @@ import IconProjectLogo from './icons/IconProjectLogo.vue';
   width: 60%;
   border-bottom: .2rem dashed var(--color-background);
   margin: 1rem 0;
+}
+
+.menuOptions>div {
+  width: auto;
+  height: 2rem;
 }
 </style>

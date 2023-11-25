@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, type Component } from 'vue'
 
 export type MenuItem = {
   label: string,
@@ -31,4 +30,5 @@ const { label, options } = defineProps<MenuItem>()
 .miContainer:hover,
 .miContainer:focus {
   color: var(--color-text-soft)
-}</style>
+}
+</style>

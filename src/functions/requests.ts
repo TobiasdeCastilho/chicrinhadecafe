@@ -1,22 +1,50 @@
+import { useAuth } from "@/stores/auth"
+
 interface RequestOptions<T> {
   endpoint: string
-  auth: string
   method?: string
-  callback: (data: T) => null
-  errorCallback: (data: any) => null
+  callback: (data: T) => void
+  errorCallback?: (data: string) => void
 }
 
-export const request = async <T>(options: RequestOptions<T>, data: {}) => {
-  const body = JSON.stringify(data)
+interface ResponseError {
+  message: string
+  logout: boolean
+}
 
-  fetch(options.endpoint, {
+type Response<T> = {
+  status: true
+  data: T
+} | {
+  status: false
+  data: ResponseError
+}
+
+const server = { address: '127.0.0.1', port: 80 }
+
+export const request = async <T>(options: RequestOptions<T>, data: {}) => {
+  const _body = JSON.stringify({ ...data })
+
+  fetch(`${server.address}:${server.port}/${options.endpoint}`, {
     method: options.method ?? 'POST',
     headers: new Headers({
       "Content-Type": "application/json",
-      "Content-Length": body.length.toString(),
+      "Content-Length": _body.length.toString(),
     }),
-    body: JSON.stringify(data)
+    body: _body
   })
-    .catch(err => options.errorCallback(err))
-    .then(async (response) => options.callback(await JSON.parse(response?.data) as T))
+    .catch(err => options.errorCallback?.(err))
+    .then(async (res) => {
+      const response = await res?.json() as Response<T>
+      if (res?.status.toString().startsWith('2'))
+        if (response.status)
+          options.callback(response.data)
+        else {
+          options.errorCallback?.(response.data.message)
+          if (response.data.logout)
+            useAuth().logout()
+        }
+      else
+        options.errorCallback?.(`${res?.status}::${res?.statusText}`)
+    })
 }

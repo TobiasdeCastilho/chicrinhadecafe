@@ -1,7 +1,19 @@
-<style scoped></style>
+<script setup lang="ts">
 
-<layout>
+const { title } = defineProps<{
+  title: string
+}>()
 
-</layout>
+</script>
 
-<style scoped></style>
+<template>
+  <header class="titleContainer">
+    <p>{{ title }}</p>
+  </header>
+</template>
+
+<style scoped>
+.titleContainer {
+  width: 100%;
+}
+</style>

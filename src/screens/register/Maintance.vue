@@ -1,4 +1,4 @@
-<script>
+<script scoped lang="ts">
 
 import SideMenu from '#/SideMenu.vue'
 import ScreenHeader from '#/ScreenHeader.vue'
@@ -9,7 +9,7 @@ import ScreenHeader from '#/ScreenHeader.vue'
   <div id="screen">
     <SideMenu />
     <div class="">
-      <ScreenHeader />
+      <ScreenHeader title="Manutenção" />
     </div>
   </div>
 </template>

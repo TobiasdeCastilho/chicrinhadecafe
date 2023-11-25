@@ -1,14 +1,33 @@
 <script setup lang="ts">
-import BorderlessInput from '../components/BorderlessInput.vue'
-import BorderlessButton from '../components/BorderlessButton.vue'
-import LinkStyleButton from '../components/LinkStyleButton.vue'
-import IconProjectLogo from '../components/icons/IconProjectLogo.vue'
 
-const forgotClick = () => {
+/* Dependencies */
+import { ref, toRef } from 'vue';
+
+/* Components */
+import BorderlessButton from '@/components/BorderlessButton.vue';
+import BorderlessInput from '@/components/BorderlessInput.vue';
+import LinkStyleButton from '@/components/LinkStyleButton.vue';
+import IconProjectLogo from '@/components/icons/IconProjectLogo.vue';
+
+/* Stores */
+import { useAuth } from '@/stores/auth';
+
+const usernameRef = ref('')
+const passwordRef = ref('')
+
+function onKeyEnter(key: string) {
+  if (key === "Enter")
+    loginClick()
+}
+
+function forgotClick() {
 
 }
 
-const loginClick = () => {
+function loginClick() {
+  console.log(usernameRef.value, passwordRef.value)
+
+  useAuth().login(usernameRef.value, passwordRef.value)
 }
 
 </script>
@@ -20,11 +39,12 @@ const loginClick = () => {
         <IconProjectLogo class="logo" />
       </div>
       <div class="formContainer flexColumnContainer">
-        <BorderlessInput :label="'Usuário'" :name="'user'" />
-        <BorderlessInput :label="'Senha'" :name="'password'" type="password" />
+        <BorderlessInput :label="'Usuário'" :name="'username'" :onEnterKey="onKeyEnter" v-model="usernameRef" />
+        <BorderlessInput :label="'Senha'" :name="'password'" type="password" :onKeyPress="onKeyEnter"
+          v-model="passwordRef" />
         <div class="flexRowBetweenContainer buttonsContainer">
-          <LinkStyleButton :label="'Esqueci minha senha'" :name="'forgot'" :onClick="(t) => console.log(t)" />
-          <BorderlessButton :label="'Acessar'" :name="'login'" :onClick="(t) => $router.replace('/home')" />
+          <LinkStyleButton :label="'Esqueci minha senha'" :name="'forgot'" :onClick="forgotClick" />
+          <BorderlessButton :label="'Acessar'" :name="'login'" :onClick="loginClick" />
         </div>
       </div>
     </div>

@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 
-const { label, name, type, pattern, minimumSize } = defineProps<{
+
+const { label, name, type, pattern, minimumSize, onEnterKey } = defineProps<{
   label: string
-  name: string
-  type?: 'number' | 'password' | 'text'
-  pattern?: 'number' | 'text'
   minimumSize?: number
+  name?: string
+  onEnterKey?: (evt: string, _evt: any) => void
+  pattern?: 'number' | 'text'
+  type?: 'number' | 'password' | 'text'
+  modelValue?: string
 }>()
 
 const getPattern = () => {
@@ -20,11 +22,16 @@ const getPattern = () => {
   }
 }
 
+function onKeyPress(evt: any) {
+  onEnterKey?.(evt?.key, evt)
+}
+
 </script>
 
 <template>
   <div class="flexRowContainer blInputContainer">
-    <input placeholder=" " :min="minimumSize" :type="type" :pattern="getPattern()" :name="name">
+    <input v-bind="$attrs" :min="minimumSize" :name="name" :pattern="getPattern()" :type="type" placeholder=" "
+      @input="$emit('update:modelValue', $event.target?.value)" v-on:keypress="onKeyPress">
     <label :for="name">{{ label }}</label>
   </div>
 </template>
