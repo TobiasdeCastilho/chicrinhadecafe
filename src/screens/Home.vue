@@ -1,16 +1,11 @@
 <script setup lang="ts">
 
-import SideMenu from '#/SideMenu.vue';
+import Screen from '#/Screen.vue';
 
 </script>
 
 <template>
-  <div id="screen">
-    <SideMenu />
-    <div class="">
-
-    </div>
-  </div>
+  <Screen />
 </template>
 
 <style scoped></style>

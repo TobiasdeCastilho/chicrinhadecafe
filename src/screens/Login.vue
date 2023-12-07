@@ -11,7 +11,9 @@ import IconProjectLogo from '@/components/icons/IconProjectLogo.vue';
 
 /* Stores */
 import { useAuth } from '@/stores/auth';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const usernameRef = ref('')
 const passwordRef = ref('')
 
@@ -25,9 +27,7 @@ function forgotClick() {
 }
 
 function loginClick() {
-  console.log(usernameRef.value, passwordRef.value)
-
-  useAuth().login(usernameRef.value, passwordRef.value)
+  useAuth().login(usernameRef.value, passwordRef.value, router)
 }
 
 </script>

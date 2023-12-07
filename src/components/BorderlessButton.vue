@@ -10,6 +10,7 @@ const { label, name, onClick } = defineProps<{
 
 <template>
   <button tabindex="0" class="flexColumnContainer blButton" :onclick="() => onClick(name ?? label)">
+    <slot></slot>
     <p>{{ label }}</p>
   </button>
 </template>
@@ -43,8 +44,8 @@ const { label, name, onClick } = defineProps<{
   user-select: none;
 }
 
-.blButton:hover>p,
-.blButton:focus>p {
+.blButton:hover>*,
+.blButton:focus>* {
   color: var(--color-oposite-focus);
 }
 </style>

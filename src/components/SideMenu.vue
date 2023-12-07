@@ -1,39 +1,50 @@
 <script setup lang="ts">
 
+import { useAuth } from '@/stores/auth';
+import { useDialog } from '@/stores/dialog';
+
 import IconProjectLogo from './icons/IconProjectLogo.vue';
+
+import IconAdd from './icons/IconAdd.vue';
+import IconLogout from './icons/IconLogout.vue';
+
+const auth = useAuth()
 
 </script>
 
 <template>
-  <div tabindex="0" class="flexColumnContainer smContainer">
-    <div tabindex="0" :onClick="() => $router.replace('/home')" class="smItem">
-      <IconProjectLogo class="smIcon" />
-    </div>
-    <div class="smSeparator" />
-    <div class="smItem" :onClick="() => $router.replace('/register')">
-      <p>Cadastro</p>
-    </div>
-    <div class="smItem" :onClick="() => $router.replace('/stock')">
-      <p>Estoque</p>
-    </div>
-    <div class="smItem" :onClick="() => $router.replace('/sales')">
-      <p>Vendas</p>
+  <div tabindex="0" class="smContainer">
+    <div class="flexColumnContainer smMenu">
+      <div tabindex="0" :onClick="() => $router.replace('/home')" class="smItem">
+        <IconProjectLogo class="smIcon" />
+      </div>
+      <div class="smSeparator" />
+      <div class="smItem" :onClick="() => $router.replace('/register')">
+        <IconAdd class="smIcon" />
+      </div>
+      <div class="smItem" :onClick="() => auth.logout($router)">
+        <IconLogout class="smIcon" />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .smContainer {
-  height: 100vh;
+  height: 100%;
+}
+
+.smMenu {
+  height: 100%;
   width: 5rem;
+  padding: .5rem 0;
   background-color: var(--color-background-soft);
-  box-shadow: .4rem 0rem .6rem -.8rem var(--color-oposite-background);
   justify-content: flex-start;
-  padding: 1rem 0;
+  border-radius: .8rem;
   overflow-y: scroll;
 }
 
-.smContainer:first-child::before {
+.smMenu:first-child::before {
   display: block;
   width: 90%;
   height: 1rem;
