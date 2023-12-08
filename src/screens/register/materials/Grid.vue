@@ -7,7 +7,6 @@ import Screen from '#/Screen.vue'
 <template>
   <Screen title="Cadastros de materiais">
 
-
   </Screen>
 </template>
 

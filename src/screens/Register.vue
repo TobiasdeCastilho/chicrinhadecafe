@@ -21,7 +21,6 @@ const dialog = useDialog()
     </MenuButton>
     <MenuButton class="rButton" label="Dialog" name="materials"
       :onClick="() => dialog.confirm('merda?', () => console.log('cu'))">
-
     </MenuButton>
   </Screen>
 </template>

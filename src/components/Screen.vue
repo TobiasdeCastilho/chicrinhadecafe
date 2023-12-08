@@ -14,29 +14,38 @@ dialog.close()
 
 <template>
   <div id="screenContainer">
-    <dialog :open="dialog.isVisible()">
-      <div class="sDialog">
-        <div>
-          <p>{{ dialog.getTitle() }}</p>
-        </div>
-        <div>
-          <p>{{ dialog.getMessage() }}</p>
-        </div>
-        <div>
-        </div>
-        <div class="sButtonContainer">
-          <div class="sDialogButton" :onClick="() => dialog.onConfirm()">
-            <p>Sim</p>
+    <div v-if="dialog.isVisible()">
+      <dialog open>
+        <div class=" sDialog">
+          <div class="sDialogTitle">
+            <p>{{ dialog.getTitle() }}</p>
           </div>
-          <div class="sDialogButton" :onClick="() => dialog.onDeny()">
-            <p>Não</p>
+          <div class="sDialogText">
+            <p>{{ dialog.getMessage() }}</p>
           </div>
-          <div class="sDialogButton" :onClick="() => dialog.close()">
-            <p>Ok</p>
+          <div>
+          </div>
+          <div class="sButtonContainer">
+            <div v-if="dialog.getType() === 'confirm'">
+              <div class="sDialogButton" :onClick="() => dialog.onConfirm()">
+                <p>Sim</p>
+              </div>
+              <div class="sDialogButton" :onClick="() => dialog.onDeny()">
+                <p>Não</p>
+              </div>
+            </div>
+            <div v-if="dialog.getType() !== 'confirm'">
+              <div class="sDialogButton" :onClick="() => {
+                dialog.close()
+                dialog.onConfirm()
+              }">
+                <p>Ok</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </dialog>
+      </dialog>
+    </div>
     <div id="screen">
       <SideMenu />
       <div class="sContainer">
@@ -98,8 +107,13 @@ dialog.close()
 dialog {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background: #00000044;
+  position: absolute;
+  z-index: 10000;
 }
 
 .sDialog {
@@ -107,7 +121,37 @@ dialog {
   background-color: var(--color-background);
 }
 
-.sButtonContainer {
+.sDialogTitle {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  padding: .2rem 0;
+}
+
+.sDialogTitle>p {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-oposite-background);
+  user-select: none;
+}
+
+.sDialogText {
+  display: flex;
+  flex: 1;
+  justify-content: left;
+  align-items: center;
+  height: 2rem;
+  padding: 0 1.5rem;
+}
+
+.sDialogText>p {
+  font-size: 16px;
+  color: var(--color-oposite-background);
+}
+
+.sButtonContainer>div {
   display: flex;
   flex-direction: row;
   justify-content: right;

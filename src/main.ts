@@ -23,9 +23,11 @@ const router = createRouter({
     { path: '/home', name: 'Início', component: Home },
     { path: '/register', name: 'Cadastro', component: Register },
     { path: '/register/materials', name: 'Cadastro de materiais', component: MaterialsGrid },
-    { path: '/register/materials/:id', name: 'Cadastro de materiais - Manutenção', component: MaterialsMaintence },
+    { path: '/register/materials/maintence', name: 'Cadastro de materiais - Manutenção', component: MaterialsGrid },
+    { path: '/register/materials/:id', name: 'Cadastro de materiais - Alteração', component: MaterialsMaintence },
     { path: '/register/users', name: 'Cadastro de usuários', component: UsersGrid },
-    { path: '/register/users/:id', name: 'Cadastro de usuários - Manutenção', component: UsersMaintence }
+    { path: '/register/users/maintence', name: 'Cadastro de usuários - Manutenção', component: UsersMaintence },
+    { path: '/register/users/:id', name: 'Cadastro de usuários - Alteração', component: UsersMaintence }
   ]
 })
 

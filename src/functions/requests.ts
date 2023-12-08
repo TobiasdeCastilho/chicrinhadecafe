@@ -19,7 +19,7 @@ type Response<T> = {
 const server = { address: '127.0.0.1', port: 8080 }
 
 export const request = async <T>(options: RequestOptions<T>, data: {}) => {
-  const _body = JSON.stringify({ ...data })
+  const _body = JSON.stringify({ ...data, token: useAuth().getToken() })
 
   fetch(`http://${server.address}:${server.port}/${options.endpoint}`, {
     method: options.method ?? 'POST',
@@ -31,11 +31,12 @@ export const request = async <T>(options: RequestOptions<T>, data: {}) => {
   })
     .catch(err => options.errorCallback?.(err))
     .then(async (res) => {
-      const response = await res?.json() as Response<T>
-      console.log(response, res)
+      const response = await res?.json()
       if (res?.status.toString().startsWith('2'))
         if (response.status)
-          options.callback(response.data)
+          options.callback(response)
+        else if (response.length)
+          options.callback(response)
         else {
           options.errorCallback?.(response.message)
           if (response.logout)

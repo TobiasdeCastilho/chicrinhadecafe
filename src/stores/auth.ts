@@ -27,6 +27,10 @@ export const useAuth = defineStore('auth', () => {
     }
   }
 
+  function getToken() {
+    return user.value.token
+  }
+
   function getUser() {
     return user.value
   }
@@ -64,5 +68,5 @@ export const useAuth = defineStore('auth', () => {
     return logged.value
   }
 
-  return { getUser, login, logout, isLogged }
+  return { getUser, login, logout, isLogged, getToken }
 })

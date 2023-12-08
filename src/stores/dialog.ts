@@ -14,8 +14,8 @@ export const useDialog = defineStore('message', () => {
     visible.value = false
   }
 
-  function alert(message: string) {
-    dialog.value = { type: 'alert', title: 'Atenção', message }
+  function alert(message: string, onConfirm?: () => void) {
+    dialog.value = { type: 'alert', title: 'Atenção', message, onConfirm }
     visible.value = true
   }
 
@@ -53,5 +53,9 @@ export const useDialog = defineStore('message', () => {
     return dialog.value.title
   }
 
-  return { alert, confirm, error, isVisible, close, onConfirm, onDeny, getMessage, getTitle }
+  function getType() {
+    return dialog.value.type
+  }
+
+  return { alert, confirm, error, isVisible, close, onConfirm, onDeny, getMessage, getTitle, getType }
 })

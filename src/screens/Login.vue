@@ -1,12 +1,11 @@
 <script setup lang="ts">
 
 /* Dependencies */
-import { ref, toRef } from 'vue';
+import { ref } from 'vue';
 
 /* Components */
 import BorderlessButton from '@/components/BorderlessButton.vue';
 import BorderlessInput from '@/components/BorderlessInput.vue';
-import LinkStyleButton from '@/components/LinkStyleButton.vue';
 import IconProjectLogo from '@/components/icons/IconProjectLogo.vue';
 
 /* Stores */
@@ -43,7 +42,7 @@ function loginClick() {
         <BorderlessInput :label="'Senha'" :name="'password'" type="password" :onKeyPress="onKeyEnter"
           v-model="passwordRef" />
         <div class="flexRowBetweenContainer buttonsContainer">
-          <LinkStyleButton :label="'Esqueci minha senha'" :name="'forgot'" :onClick="forgotClick" />
+          <!-- <LinkStyleButton :label="'Esqueci minha senha'" :name="'forgot'" :onClick="forgotClick" /> -->
           <BorderlessButton :label="'Acessar'" :name="'login'" :onClick="loginClick" />
         </div>
       </div>
@@ -75,5 +74,6 @@ function loginClick() {
 .buttonsContainer {
   width: 100%;
   padding-top: 1rem;
+  justify-content: right;
 }
 </style>
